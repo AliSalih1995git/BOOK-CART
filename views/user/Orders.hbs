@@ -1,0 +1,53 @@
+<section>
+    <div class="container">
+    <h4 class="text-center">Orders List</h4>
+    <table class="table mt-5">
+        <div class="ml-5">
+  <thead>
+    <tr> 
+      <th scope="col">Order ID & Date</th>                           
+        <th scope="col">User</th>                          
+        <th scope="col">Total</th>
+        <th scope="col">Payment</th>
+        <th scope="col">Details</th>
+    </tr>
+  </thead>
+  <tbody>
+     {{#each orders}}
+        <tr>
+ 
+            <td scope="row">
+                 {{!-- <div>Book Name :{{this.pro_id.products.bookName}}</div> --}}
+                <div>Date :{{this.ordered_on}}</div>
+                <div>Order ID :{{this._id}}</div>
+             </td>
+                                    
+            <td> 
+                                         
+                <div>Address :{{this.deliveryDetails.house}} </div>
+                <div>PIN :{{deliveryDetails.pincode}} </div>
+                <div>Mobile :{{this.deliveryDetails.number}}</div>
+            </td>
+            <td><div>RS.{{this.grandTotal}}</div>
+                <div>Discount : RS.</div>
+            </td>
+                                    
+            <td>
+                <div>Method :{{this.paymentMethod}} </div>
+                    <div>Status :{{this.payment_status}}</div>
+            </td>
+                                    
+            <td><a href="/viewOrderProducts/{{this._id}}" class="btn btn-primary">Details</a>
+            </td>
+
+
+
+        </tr>
+    {{/each}}
+   
+   
+  </tbody>
+</table>
+</div>
+</div>
+</section>

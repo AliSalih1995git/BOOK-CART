@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title>Amado - Furniture Ecommerce Template | Cart</title>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="/Viewdetails/img/core-img/favicon.ico">
+
+    <!-- Core Style CSS -->
+    <link rel="stylesheet" href="/Viewdetails/css/core-style.css">
+    <link rel="stylesheet" href="/Viewdetails/style.css">
+
+</head>
+
+<body>
+    <!-- Search Wrapper Area Start -->
+    <div class="search-wrapper section-padding-100">
+        <div class="search-close">
+            <i class="fa fa-close" aria-hidden="true"></i>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="search-content">
+                        <form action="#" method="get">
+                            <input type="search" name="search" id="search" placeholder="Type your keyword...">
+                            <button type="submit"><img src="/Viewdetails/img/core-img/search.png" alt=""></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Search Wrapper Area End -->
+
+    <!-- ##### Main Content Wrapper Start ##### -->
+    <div class="main-content-wrapper d-flex clearfix">
+
+        <!-- Mobile Nav (max width 767px)-->
+        <div class="mobile-nav">
+            <!-- Navbar Brand -->
+            <div class="amado-navbar-brand">
+                {{!-- <a href="index.html"><img src="" alt=""></a> --}}
+            </div>
+            <!-- Navbar Toggler -->
+            <div class="amado-navbar-toggler">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <!-- Header Area Start -->
+        <header class="header-area clearfix">
+            <!-- Close Icon -->
+            <div class="nav-close">
+                <i class="fa fa-close" aria-hidden="true"></i>
+            </div>
+            <!-- Logo -->
+            <div class="logo">
+                {{!-- <a href="index.html"><img src="/Viewdetails/img/core-img/logo.png" alt=""></a> --}}
+            </div>
+            <!-- Amado Nav -->
+            <nav class="amado-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="product-details.html">Product</a></li>
+                    <li class="active"><a href="cart.html">Cart</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                </ul>
+            </nav>
+          
+        </header>
+        <!-- Header Area End -->
+
+        <div class="cart-table-area section-padding-100">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <div class="cart-title mt-50">
+                            <h2>Shopping Cart</h2>
+                        </div>
+
+                        <div class="cart-table clearfix">
+                            <table class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+										<th>Sub total</th>
+										<th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+									{{#each cartItems.products}}
+                                    <tr>
+                                        <td class="cart_product_img">
+                                            <a href="#"><img src="/upload/{{pro_id.image.[0]}}" alt="Product"></a>
+                                        </td>
+                                        <td class="cart_product_desc">
+                                            <h5>{{pro_id.bookName}}</h5>
+                                        </td>
+                                        <td class="price">
+                                            <span>₹ {{pro_id.price}}</span>
+                                        </td>
+                                        <td class="qty ">
+                                            <div class="qty-btn data-align center">
+                                                {{!-- <p>Qty</p> --}}
+                                                <div class="quantity d-flex">
+                                                    <button class="btn btn-outline-info" style="width:40px;height: 30px;" onclick="changeQuantity('{{this._id}}','{{pro_id._id}}','{{this.quantity}}',-1)">
+										               <i class="fa fa-minus" aria-hidden="true"></i>
+									                </button>
+                                                    <input class="form-control" disabled type="text" name="num-product1" value="{{this.quantity}}">
+									                <button class="btn btn-outline-info" style="width:40px;height: 30px;" onclick="changeQuantity('{{this._id}}','{{pro_id._id}}','{{this.quantity}}',1)">
+										            <i class="fa fa-plus" aria-hidden="true"></i>
+									                </button>
+                                                </div>
+                                            </div>
+											
+                                        </td>
+										<td class="column-5">₹ {{this.subtotal}}</td>
+										<td class="column-5">
+								
+										<button onclick="removeProductforcart('{{this._id}}')" class="btn btn-danger">Remove</button>
+								
+								
+                                    </tr>
+                                    
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="cart-summary">
+                            <h5>Cart Total</h5>
+                            <ul class="summary-table">
+                                <li><span>Price </span><span>{{cartcount}} items</span></li>
+                                <li><span>subtotal:</span> <span>₹  {{netTotal}}</span></li>
+                                <li><span>delivery:</span> <span>₹  {{DeliveryCharges}}</span></li>
+                                <li><span>total:</span> <span>	₹ {{grandTotal}}</span></li>
+                            </ul>
+                            <div class="cart-btn mt-100">
+                                <a href="/checkout" class="btn amado-btn w-100">Checkout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+	<script>
+	function changeQuantity(cartid,proId,quantity,count){
+		$.ajax({
+			url:'/change-product-quantity',
+			data:{
+				cartid:cartid,
+				product:proId,
+				quantity:quantity,
+				count:count,
+			},method:'post',
+			success:(response)=>{
+                alert('added')
+				if(response.removeProduct){
+				alert('product Removed From cart')
+				location.reload();
+				}else{
+				location.reload();	
+
+					
+			}
+			}
+		})
+	} 
+</script>
+<script>
+        function removeProductforcart(cartId) {
+          $.ajax({
+            url: "/remove-Product-forcart",
+            data: {
+              cart: cartId,
+            },
+            method: "post",
+            success: (Response) => {
+              if (Response) {
+                alert('product removed from cart')
+                location.reload()
+              }
+            }
+          })
+        }
+      </script>
+
+    <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+    <script src="/Viewdetails/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="/Viewdetails/js/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="/Viewdetails/js/bootstrap.min.js"></script>
+    <!-- Plugins js -->
+    <script src="/Viewdetails/js/plugins.js"></script>
+    <!-- Active js -->
+    <script src="/Viewdetails/js/active.js"></script>
+
+</body>
+
+</html>

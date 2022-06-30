@@ -1,0 +1,389 @@
+<html>
+<head>
+<title>Product</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="https://fontawesome.com/v4.7.0/assets/font-awesome/css/font-awesome.css">
+</head>
+<body>
+
+	<!-- Header -->
+
+	<!-- Header -->
+	<header class="header1 mt-5">
+       
+		<!-- Header desktop -->
+		
+	</header>
+
+
+
+
+		
+	</section>
+
+
+	<!-- Content page -->
+	<section class="bgwhite p-t-55 p-b-65">
+		<div class="container">
+			<div class="row">
+				<div class="container ">
+    <div class="">
+
+    
+    <div class="row ">
+        <aside class=" col-md-3">
+             <a  href="/">Back to home</a>
+            <form id="filter" method="post">
+                <div class="card">
+                    <article class="filter-group">
+                         <div class="wrap-dropdown-content bo7 p-t-15 p-b-1 p-r-10 p-l-10">
+						<h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
+						Category
+						<i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
+						<i class="up-mark fs-12 color1 fa fa-plus" aria-hidden="true"></i>
+						</h5>
+
+					 <div class="dropdown-content dis-none p-t-15 p-b-15 ps-3">
+						  <label class="custom-control ">
+                                    <input type="radio" class="custom-control-input" value=""
+                                        name="Subcategory">
+                                    <div class="custom-control-label">All
+                                    </div>
+                                </label>
+                            {{!-- <div class="card-body"> --}}
+                    {{#each category}}
+
+                                <label class="custom-control ">
+                                    <input type="radio" class="custom-control-input" value="{{this._id}}"
+                                        name="category">
+                                    <div class="custom-control-label">{{this.categoryName}}
+                                    </div>
+                                </label>
+                                {{/each}}
+                                {{!-- <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="category" value="" hidden
+                                        checked>
+
+                                </label> --}}
+										
+</ul>
+          
+
+                            {{!-- </div> --}}
+                        </div>
+                    </article>
+
+
+                    <!-- filter-group  .// -->
+                    	<article class="filter-group">
+                        <div class="wrap-dropdown-content bo7 p-t-15 p-b-1 p-r-10 p-l-10">
+						<h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
+						Sub Category
+						<i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
+						<i class="up-mark fs-12 color1 fa fa-plus" aria-hidden="true"></i>
+						</h5>
+
+ <div class="dropdown-content dis-none p-t-15 p-b-15 ps-3">
+                            {{!-- <div class="card-body"> --}}
+									 <label class="custom-control ">
+                                    <input type="radio" class="custom-control-input" value=""
+                                        name="subcategory">
+                                    <div class="custom-control-label">All
+                                    </div>
+                                </label>
+                                 {{#each subcategory}}
+
+                                <label class="custom-control ">
+                                    <input type="radio" class="custom-control-input" value="{{this._id}}"
+                                        name="subcategory">
+                                    <div class="custom-control-label">{{this.Sub_category
+}}
+                                    </div>
+                                </label>
+                                {{/each}}
+                                {{!-- <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="brand" value="" hidden
+                                        checked>
+
+                                </label> --}}
+
+                            {{!-- </div> --}}
+                        </div>
+						</div>
+                    </article>
+					
+
+                    <!-- filter-group .// -->
+                    <article class="filter-group">
+						
+                       <div class="wrap-dropdown-content bo7 p-t-15 p-b-1 p-r-10 p-l-10">
+						<h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
+						Price range
+						<i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
+						<i class="up-mark fs-12 color1 fa fa-plus" aria-hidden="true"></i>
+						</h5>
+
+ 							<div class="dropdown-content dis-none ps-3">
+                            {{!-- <div class="card-body"> --}}
+                                    <label class="custom-control custom-checkbox">
+                                        <input type="radio" class="custom-control-input" value="10000" name="Prize">
+                                        <div class="custom-control-label">Under 10000
+                                        </div>
+                                    </label>
+                                    <label class="custom-control custom-checkbox">
+                                        <input type="radio" class="custom-control-input" value="20000" name="Prize">
+                                        <div class="custom-control-label">Under 20000
+                                        </div>
+                                    </label>
+                                    <label class="custom-control custom-checkbox">
+                                        <input type="radio" class="custom-control-input" value="50000" name="Prize">
+                                        <div class="custom-control-label">Under 50000
+                                        </div>
+                                    </label>
+                                    <label class="custom-control custom-checkbox">
+                                        <input type="radio" class="custom-control-input" value="100000" name="Prize">
+                                        <div class="custom-control-label">uder 100000
+                                        </div>
+                                    </label>
+                                    <label class="custom-control custom-checkbox">
+                                        <input type="radio" class="custom-control-input" value="200000" name="Prize">
+                                        <div class="custom-control-label">uder 200000
+                                        </div>
+                                    </label>
+                                    <label class="custom-control custom-checkbox">
+                                        <input type="radio" class="custom-control-input" name="Prize" value="400000" hidden
+                                            checked>
+
+                                    </label>
+
+
+                            {{!-- </div> --}}
+                        </div>
+
+                    </article>
+
+                </div>
+            </form>
+        </aside>
+		
+        <main class="col-md-9">
+
+             <header class="border-bottom mb-4 pb-3">
+                <form class="" id="search" action="/searchResults" method="post"> 
+                <div class="md-form mt-0">
+							<input class="form-control" type="text"name="key"  placeholder="Search Products..." aria-label="Search" required>
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                </div>
+                </form>
+            </header>
+
+            
+
+      <div class="container pt-1 ">
+				{{#if filterResult}}
+				<div class="row "  id="products">
+                    {{#each filterResult}}
+					<!-- single product -->
+					<div class="col-5 col-lg-6 col-md-6 pb-5">
+						<div class="single-product ">
+							<a href="/viewDetails/{{this._id}}"><img src="/upload/{{this.image.[0]}}" style="width:auto;height:350px" alt="IMG-PRODUCT"></a>
+							<div class="product-details ">
+								<h6><a>{{this.bookName}}</a></h6>
+								<div class="price">
+									<h6>Rs {{this.price}}</h6>
+									{{!-- <h6 style="color:darkred" class="l-through">Rs {{this.MRP}}</h6>
+                                    <h6 style="color:darkred" >{{this.discount}} % off</h6> --}}
+								</div>
+                                
+
+                                {{#if ../user}}
+							<div class="prd-bottom ">
+
+								<span class="social-info" onclick="addTowishlist('{{this._id}}')">
+									<span class="lnr lnr-heart"></span>
+									<p class="hover-text"> Wishlist</p>
+								</span>
+
+								<span class="social-info" onclick="addTocart('{{this._id}}')">
+									<span class="ti-bag"></span>
+									<p class="hover-text">add Cart</p>
+								</span>
+							</div>
+							
+                          {{else}}
+							<div class="prd-bottom ">
+
+								<a href="/login"><span class="social-info">
+									<span class="lnr lnr-heart"></span>
+									<p class="hover-text"> Wishlist</p>
+								</span></a>
+
+								<a href="/login"><span class="social-info" >
+									<span class="ti-bag"></span>
+									<p class="hover-text">add Cart</p>
+								</span></a>
+							</div>
+							{{/if}}
+
+                                
+                                
+
+							</div>
+						</div>
+					</div>
+                    {{/each}}
+					
+					
+				</div>
+				{{else}}
+				<img src="	https://www.itinerantnotes.com/blog-theme/images/empty.gif" alt="" srcset="">
+				
+				
+				{{/if}}
+			</div>
+            
+
+        
+
+
+
+
+    </div>
+
+
+    {{!-- <nav class="mt-4" aria-label="Page navigation sample">
+        <ul class="pagination">
+            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav> --}}
+
+    </main>
+</div>
+</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Footer -->
+	<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
+
+	</footer>
+
+
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top bg0-hov" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
+		</span>
+	</div>
+
+	<!-- Container Selection -->
+	<div id="dropDownSelect1"></div>
+	<div id="dropDownSelect2"></div>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		$(".selection-1").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect2')
+		});
+	</script>
+
+	<script type="text/javascript">
+		/*[ No ui ]
+	    ===========================================================*/
+	    var filterBar = document.getElementById('filter-bar');
+	    noUiSlider.create(filterBar, {
+	        start: [ 50, 200 ],
+	        connect: true,
+	        range: {
+	            'min': 50,
+	            'max': 200
+	        }
+	    });
+
+	    var skipValues = [
+	    document.getElementById('value-lower'),
+	    document.getElementById('value-upper')
+	    ];
+
+	    filterBar.noUiSlider.on('update', function( values, handle ) {
+	        skipValues[handle].innerHTML = Math.round(values[handle]) ;
+	    });
+	</script>
+
+
+
+<script src="/Viewdetails/cart.js"></script>
+
+	<script>
+
+       $('input[name=category]').change(function() {
+   
+    $.ajax({
+        url: '/search-filter',  
+        method: "post",
+        data: $('#filter').serialize(),
+        success: (isResult) => {
+            
+            if (isResult) {
+                $('#products').load(location.href + " #products");
+            }
+        }
+    })
+
+  });
+
+   $('input[name=Prize]').change(function() {
+   
+    $.ajax({
+        url: '/search-filter',  
+        method: "post",
+        data: $('#filter').serialize(),
+        success: (isResult) => {
+            
+            if (isResult) {
+                $('#products').load(location.href + " #products");
+            }
+        }
+    })
+
+  });
+
+   $('input[name=subcategory]').change(function() {
+   
+    $.ajax({
+        url: '/search-filter',  
+        method: "post",
+        data: $('#filter').serialize(),
+        success: (isResult) => {
+            if (isResult) {
+                $('#products').load(location.href + " #products");
+            }
+        }
+    })
+
+  });
+  
+</script>
+<!--===============================================================================================-->
+	
+    
+</body>
+</html>

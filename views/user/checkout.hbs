@@ -1,0 +1,1140 @@
+<!doctype html>
+<html lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Book store | e-Commers</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="/Chekout/assets/img/favicon.ico">
+
+    {{!-- ajax --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <!-- CSS here -->
+      <link rel="stylesheet" href="/Chekout/assets/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/Chekout/assets/css/owl.carousel.min.css">
+      <link rel="stylesheet" href="/Chekout/assets/css/flaticon.css">
+      <link rel="stylesheet" href="/Chekout/assets/css/slicknav.css">
+      <link rel="stylesheet" href="/Chekout/assets/css/animate.min.css">
+      <link rel="stylesheet" href="/Chekout/assets/css/magnific-popup.css">
+      <link rel="stylesheet" href="/Chekout/assets/css/fontawesome-all.min.css">
+      <link rel="stylesheet" href="/Chekout/assets/css/themify-icons.css">
+      <link rel="stylesheet" href="/Chekout/assets/css/slick.css">
+      <link rel="stylesheet" href="/Chekout/assets/css/nice-select.css">
+      <link rel="stylesheet" href="/Chekout/assets/css/style.css">
+
+       {{! header  }}
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
+
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/images/icons/favicon.png" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/fonts/iconic/css/material-design-iconic-font.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/fonts/linearicons-v1.0.0/icon-font.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/vendor/css-hamburgers/hamburgers.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/vendor/animsition/css/animsition.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/vendor/select2/select2.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/vendor/daterangepicker/daterangepicker.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/vendor/MagnificPopup/magnific-popup.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/vendor/perfect-scrollbar/perfect-scrollbar.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/util.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+
+    {{! /header  }}
+</head>
+
+<body>
+  {{! heaer }}
+    <header class="header-v4">
+      <!-- Header desktop -->
+      <div class="container-menu-desktop">
+        <!-- Topbar -->
+        <div class="top-bar">
+          <div class="content-topbar flex-sb-m h-full container">
+            <div class="left-top-bar">
+              Free shipping for standard order over $100
+            </div>
+
+            <div class="right-top-bar flex-w h-full">
+              <a href="#" class="flex-c-m trans-04 p-lr-25">
+                Help & FAQs
+              </a>
+              {{#if user}}
+                <a href="#" id="logPopup" class="flex-c-m trans-04 p-lr-25">
+                  <i class="fas fa-user fa-lg me-3 fa-fw"> </i>
+                  {{user.name}}</a>
+                <a href="/logout" class="flex-c-m trans-04 p-lr-25">
+                  Logout
+                </a>
+
+              {{else}}
+                <a
+                  href="/login"
+                  id="logPopup"
+                  class="flex-c-m trans-04 p-lr-25"
+                >
+                  My Account
+                </a>
+
+                {{!/ popup Model  }}
+
+              {{/if}}
+            </div>
+          </div>
+        </div>
+
+        <div class="wrap-menu-desktop">
+          <nav class="limiter-menu-desktop container">
+
+            <!-- Logo desktop -->
+            <a href="/" class="logo">
+              <img src="/images/icons/logo-00.png" alt="IMG-LOGO" />
+            </a>
+
+            <!-- Menu desktop -->
+            <div class="menu-desktop">
+              <ul class="main-menu">
+                <li class="active-menu">
+                  <a href="/">Home</a>
+                  {{! <ul class="sub-menu">
+									<li><a href="/">Homepage 1</a></li>
+									<li><a href="/">Homepage 2</a></li>
+									<li><a href="/">Homepage 3</a></li>
+								</ul> }}
+                </li>
+
+                <li>
+                  <a href="/dummy">Shop</a>
+                </li>
+
+                <li>
+                  <a href="/orders">My Orders</a>
+                </li>
+
+                <li>
+                  <a href="blog.html">Blog</a>
+                </li>
+
+                <li>
+                  <a href="about.html">About</a>
+                </li>
+
+                <li>
+                  <a href="contact.html">Contact</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Icon header -->
+            <div class="wrap-icon-header flex-w flex-r-m">
+              <div
+                class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"
+              >
+                <i class="zmdi zmdi-search"></i>
+              </div>
+
+              <div class="icon-header-item cl1 hov-cl2">
+                <a
+                  href="/cart"
+                  class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
+                  data-notify="{{cartcount}}"
+                ><i class="zmdi zmdi-shopping-cart"></i> </a>
+                {{!-- <span class="badge bg-info text-white align-center" style="width:20px;height:20px">{{cartcount}}</span> --}}
+
+              </div>
+
+              <a
+                href="/wishlist"
+                class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
+                data-notify="0"
+              >
+                <i class="zmdi zmdi-favorite-outline"></i>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Header Mobile -->
+      <div class="wrap-header-mobile">
+        <!-- Logo moblie -->
+        <div class="logo-mobile">
+          <a href="/"><img src="/images/icons/logo-01.png" alt="IMG-LOGO" /></a>
+        </div>
+
+        <!-- Icon header -->
+        <div class="wrap-icon-header flex-w flex-r-m m-r-15">
+          <div
+            class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search"
+          >
+            <i class="zmdi zmdi-search"></i>
+          </div>
+
+          {{!-- <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10  " data-notify="{{cartcount}}">
+					<a href="/cart"></a>
+					<i class="zmdi zmdi-shopping-cart"></i>
+				</div> --}}
+          <a
+            href="/cart"
+            class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
+            data-notify="{{cartcount}}"
+          ><i class="zmdi zmdi-shopping-cart"></i></a>
+
+          <a
+            href="#"
+            class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
+            data-notify="0"
+          >
+            <i class="zmdi zmdi-favorite-outline"></i>
+          </a>
+        </div>
+
+        <!-- Button show menu -->
+        <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Menu Mobile -->
+      <div class="menu-mobile">
+        <ul class="topbar-mobile">
+          <li>
+            <div class="left-top-bar">
+              Free shipping for standard order over $100
+            </div>
+          </li>
+
+          <li>
+            <div class="right-top-bar flex-w h-full">
+              <a href="#" class="flex-c-m p-lr-10 trans-04">
+                Help & FAQs
+              </a>
+              {{#if user}}
+                <a href="/logout" class="flex-c-m p-lr-10 trans-04">
+                  Logout
+                </a>
+              {{else}}
+                <a href="/login" class="flex-c-m p-lr-10 trans-04">
+                  My Account
+                </a>
+              {{/if}}
+            </div>
+          </li>
+        </ul>
+
+        <ul class="main-menu-m">
+          <li>
+            <a href="/">Home</a>
+            <span class="arrow-main-menu-m">
+              <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </span>
+          </li>
+
+          <li>
+            <a href="/">Shop</a>
+          </li>
+
+          <li>
+            <a href="/cart" class="label1 rs1" data-label1="hot">Features</a>
+          </li>
+
+          <li>
+            <a href="blog.html">Blog</a>
+          </li>
+
+          <li>
+            <a href="about.html">About</a>
+          </li>
+
+          <li>
+            <a href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Modal Search -->
+      <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+        <div class="container-search-header">
+          <button
+            class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search"
+          >
+            <img src="/images/icons/icon-close2.png" alt="CLOSE" />
+          </button>
+
+          <form class="wrap-search-header flex-w p-l-15">
+            <button class="flex-c-m trans-04">
+              <i class="zmdi zmdi-search"></i>
+            </button>
+            <input
+              class="plh3"
+              type="text"
+              name="search"
+              placeholder="Search..."
+            />
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <main>
+    <style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+
+  background-color: white;
+}
+</style>
+
+
+<section class="checkout_area ">
+          <div class="container">
+            <div class="returning_customer mb-4 mt-4 ">
+              <div class="check_title">
+                <h5 style="color:darkmagenta">
+                  {{!-- please select a address --}}
+                  {{!-- <a href="#">Click here to login</a> --}}
+                </h5>
+              </div>
+              </div>
+              <div class=" container-fluid content-row  mb-4 ">
+              
+              {{!-- cardss --}}
+              <div class="row mb-4 mt-4 ">
+              {{#each Addresses.address}}
+           
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+    
+    <div class="card rounded h-100 ">
+      <h3></h3>
+      <p style="color:black">{{this.fname}} {{this.lname}}, {{this.house}}, {{this.localplace}}, {{this.town}}, {{this.district}}, {{this.state}}, Pincode: {{this.pincode}}</p><P style="color:black">Email: {{this.email}}</P>
+      <p style="color:black">Mobile: {{this.mobile}}</p>
+      <button class="btn btn-primary" onclick="autofill('{{this.fname}}','{{this.lname}}','{{this.mobile}}','{{this.email}}','{{this.house}}','{{this.localplace}}','{{this.town}}','{{this.district}}','{{this.state}}','{{this.pincode}}')">use this Address</button>
+    </div>
+    
+  </div>
+    {{/each}}
+    </div>
+    </div>
+  {{!-- <div class="column">
+    <div class="card">
+      <h3>Card 2</h3>
+      <p>Some text</p>
+      <p>Some text</p>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <h3>Card 3</h3>
+      <p>Some text</p>
+      <p>Some text</p>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <h3>Card 4</h3>
+      <p>Some text</p>
+      <p>Some text</p>
+    </div>
+  </div>
+</div> --}} 
+
+
+
+              {{!-- <p>
+                If you have shopped with us before, please enter your details in the
+                boxes below. If you are a new customer, please proceed to the
+                Billing & Shipping section.
+              </p>
+              <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+                <div class="col-md-6 form-group p_star">
+                  <input type="text" class="form-control" id="name" name="name" value=" " placeholder="Username or Email"/>
+                </div>
+                <div class="col-md-6 form-group p_star">
+                  <input type="password" class="form-control" id="password" name="password" value="" placeholder="Password"/>
+                </div>
+                <div class="col-md-12 form-group">
+                  <button type="submit" value="submit" class="btn_3">
+                    log in
+                  </button>
+                  <div class="creat_account">
+                    <input type="checkbox" id="f-option" name="selector" />
+                    <label for="f-option">Remember me</label>
+                  </div>
+                  <a class="lost_pass" href="#">Lost your password?</a>
+                </div>
+              </form> --}}
+            
+            {{!-- <div class="cupon_area">
+              <div class="check_title">
+                <h2>
+                  Have a coupon?
+                  <a href="#">Click here to enter your code</a>
+                </h2>
+              </div>
+              <input type="text" placeholder="Enter coupon code" />
+              <a class="tp_btn" href="#">Apply Coupon</a>
+            </div> --}}
+
+
+            <div class="billing_details ">
+              <div class="row mt-3">
+                <div class="col-lg-8">
+                  <h5  style="color:darkmagenta">
+                 Fill the form Below
+                  {{!-- <a href="#">Click here to login</a> --}}
+                </h5>
+                  {{!-- <h2>or fill the form Below Billing Details</h2> --}}
+                  <form class="row contact_form" action="/checkout" id="checkoutForm"method="post" novalidate="novalidate">
+                    <div class="col-md-12 form-group p_star me-2" style="border: 1px solid #eee;">
+                      
+                      <input type="text" class="form-control" id="fname" name="fname" placeholder="Full name" />
+                      
+                      <input type="text" class="form-control" id="#" name="userId" value="{{user._id}}" hidden/>
+                    </div>
+
+
+                    <div class="col-md-12 form-group" hidden>
+                      <input type="text" class="form-control" id="discountedPrice" name="discountedPrice" value="0" hidden/>
+                    </div>
+                    <div class="col-md-12 form-group" hidden>
+                      <input type="number" class="form-control" id="MainTotal" name="mainTotal"  value="{{grandTotal}}" hidden />
+                    </div>
+                    <div class="col-md-12 form-group" hidden>
+                      <input type="text" class="form-control" id="couponName" name="couponName" value="No Coupon Applied"  hidden   />
+
+                      
+                    </div>
+                     <div class="col-md-12 form-group" hidden>
+                      <input type="number" class="form-control" id="discoAmountpercentage" name="discoAmountpercentage" hidden value="0" />
+                    </div>
+
+                    {{!-- <div class="col-md-6 form-group p_star me-2" style="border: 1px solid #eee;">
+                      <input type="text" class="form-control" id="lname" name="lname" placeholder="Last name" />
+                    </div> --}}
+                    {{!-- <div class="col-md-6 form-group p_star">
+                      <input type="text" class="form-control" id="lname" name="name" placeholder="Last name"/>
+                    </div> --}}
+                    <div class="col-md-6 form-group p_star" style="border: 1px solid #eee;">
+                      <input type="text" class="form-control" id="mobile" name="number" placeholder="Phone number" />
+                    </div>
+                    <div class="col-md-6 form-group p_star" style="border: 1px solid #eee;">
+                      <input type="text" class="form-control" id="email" name="email" placeholder="Email Address" />
+                    </div>
+
+                    <div class="col-md-12 form-group " style="border: 1px solid #eee;">
+                      <input type="text" class="form-control" id="house" name="house" placeholder="House Name or Company name" />
+                    </div>
+                    
+                    {{!-- <div class="col-md-12 form-group p_star">
+                      <select class="country_select" name="country">
+                          <option >Country</option>
+                        <option >India</option>
+                        <option >America</option>
+                        <option>Pakistan</option>
+                      </select>
+                    </div> --}}
+                    <div class="col-md-12 form-group p_star" style="border: 1px solid #eee;">
+                      <input type="text" class="form-control" id="localplace" name="localplace" placeholder="Locality" />
+                    </div>
+                    {{!-- <div class="col-md-12 form-group p_star">
+                      <input type="text" class="form-control" id="add2" name="add2" placeholder="Address line 02" />
+                    </div> --}}
+                    <div class="col-md-12 form-group p_star" style="border: 1px solid #eee;">
+                      <input type="text" class="form-control" id="town" name="town" placeholder="Town/City" />
+                    </div>
+                    <div class="col-md-12 form-group p_star" style="border: 1px solid #eee">
+                      {{!-- <select class="country_select" name="district">
+                          <option >District</option>
+                        <option >Malappuram</option>
+                        <option >Calicut</option>
+                        <option >Thrissur</option>
+                      </select> --}}
+                      <input type="text" class="form-control" id="district" name="district" placeholder="District" />
+                    </div>
+                    <div class="col-md-12 form-group" style="border: 1px solid #eee">
+                      <input type="text" class="form-control" id="state" name="state" placeholder="State" />
+                    </div>
+                    <div class="col-md-12 form-group" style="border: 1px solid #eee;">
+                      <input type="text" class="form-control" id="pincode" name="pincode" placeholder="Postcode/ZIP" value=""/>
+                    </div>
+                    {{!-- <div class="col-md-12 form-group">
+                      <div class="creat_account">
+                        <input type="checkbox" id="f-option2" name="selector" />
+                        <label for="f-option2">Create an account?</label>
+                      </div>
+                    </div> --}}
+                    {{!-- <div class="col-md-12 form-group">
+                      <div class="creat_account">
+                        <h3>Shipping Details</h3>
+                        <input type="checkbox" id="f-option3" name="selector" />
+                        <label for="f-option3">Ship to a different address?</label>
+                      </div>
+                      <textarea class="form-control" name="message" id="message" rows="1"
+                        placeholder="Order Notes"></textarea>
+                    </div> --}}
+                    {{!-- </form> --}}
+                    </div>
+                      <div class="col-lg-4">
+                        <div class="order_box">
+                        <h2>Your Order</h2>
+                        <ul class="list">
+                            <li>
+                            <a style="color:darkmagenta" href="#">Products
+                              <span>Total</span>
+                              </a>
+                             </li>
+                              {{#each products}}
+
+                              <li>
+                                <a href="#">{{this.products.productName}}
+                                <span class="middle">x{{this.quantity}} </span>
+                                <span class="last">₹ {{this.subtotal}}</span>
+                          
+                                  </a>
+                                 </li>
+
+                               {{/each}}
+
+                      {{!-- <li>
+                        <a href="#">Fresh Tomatoes
+                          <span class="middle">x 02</span>
+                          <span class="last">$720.00</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">Fresh Brocoli
+                          <span class="middle">x 02</span>
+                          <span class="last">$720.00</span>
+                        </a>
+                      </li> --}}
+                    </ul>
+                    <ul class="list list_2">
+                      <li>
+                        <a href="#">Subtotal
+                          <span>₹ {{netTotal}}</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">Shipping
+                          <span style="color:darkred">  ₹ {{DeliveryCharges}}</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">Total
+                          <span> ₹ {{grandTotal}}</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">coupon discount
+                          <span style="color:darkred" id="discount">- ₹ 0</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">Grand Total  
+                          <span id="totalwithCoupon"> ₹ {{grandTotal}}</span>
+                        </a>
+                      </li>
+                    </ul>
+
+
+                    <div class="flex-w flex-m w-full-sm mt-3 md-6   ">
+                        <button type="button" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4  " style="height:40px ;" data-toggle="modal" data-target="#exampleModalCenter">
+														Get New Coupon
+													  </button>
+													<h6 class="mt-3">Enter your coupon code if you have one.</h6>
+													
+													<input type="text" class="form-control" name="coupon"
+														id="couponInput" autocapitalize="on" placeholder="Coupon Code" />
+													<input type="text" id="couponTotal" name="total" class="sizefull s-text7 p-l-22 p-r-22" 
+														value="{{grandTotal}}" hidden>
+                            	{{!-- <input type="text" id="amountToBePaid" name="total" class="sizefull s-text7 p-l-22 p-r-22" 
+														value="{{grandTotal}}"> --}}
+
+                     </div>  
+                            <a id="couponBtn" onclick="couponApply()"
+														class="btn flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 text-white text-center  mt-2  "
+														style="width: 100%;text-decoration: none;">Apply
+														Coupon</a>
+                        
+                      <!-- Error handling of coupons  -->
+
+            
+													<div class="mt-2">
+														<div class="alert alert-danger" style="display: none;"
+															id="couponUsed" role="alert">
+															This Coupon was redeemed
+														</div>
+														<div class="alert alert-danger" style="display: none;"
+															id="couponInvalid" role="alert">
+															This Coupon is
+															invalid
+														</div>
+														<div class="alert alert-success" style="display: none;"
+															id="couponSuccess" role="alert">
+															Coupon Applied
+															Successfully
+														</div>
+														<div class="alert alert-warning" style="display: none;"
+															id="couponExpired" role="alert">
+															Sorry!!! Your
+															Coupon has been Expired
+														</div>
+														
+														<div class="alert alert-warning" style="display: none;"
+															id="couponMaxLimit" role="alert">
+															Sorry!!! Your
+															Coupon Has Reached Maximum Limit
+														</div>
+													</div>
+
+
+
+                          {{!-- modal management --}}
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+	  <div class="modal-content">
+		
+		<div class="modal-header">
+		  <h3 class="modal-title" id="exampleModalLongTitle">All Available Coupons</h3>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		  
+		</div>
+		{{#each AllCoupons }}
+		<div class="modal-body">
+		  <div class="row ">
+			  <div class="col-12 ">
+				<input type="text" name="" id="{{this._id}}" value="{{this.coupon}}"  hidden >
+		  
+				<div class="card">
+				  <div class="card-body">
+					<h1 class="card-title">{{this.couponCode}}</h1>
+					<p class="card-text">You Can get <span style="color:red"> {{this.discount}}%</span> Discount for this Coupon</p>
+					<p>Expired on : {{this.expirationTime}}</p>
+					<button type="button" onclick="copyFunction('{{this.couponCode}}')" class="btn btn-primary copy-button">Copy</button>
+				  </div>
+				</div>
+			  </div>
+			  </div>
+		  </div>
+		  
+		{{/each}}
+		<div class="modal-footer"></div>
+		
+	  </div>
+	</div>
+ 
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                                          {{!-- <p>Please select your Payment Method:</p>
+                        <input type="radio" id="Cod" name="PaymentMethod" value="Cash On Delivery">
+                        <label for="Cod">Cash On Delivery</label><br>
+                        <input type="radio" id="Online" name="PaymentMethod" value="Online Payment">
+                        <label for="Online">Online Payment</label><br> --}}
+
+
+                    <div class="payment_item">
+                      <div class="radion_btn">
+                        <input type="radio" id="cod" name="paymentMethod" value="cod"/>
+                        <label for="cod">Cash on Delivery</label>
+                        <div class="check"></div>
+                      </div>
+                      <p>
+                        Please send a check to Store Name, Store Street, Store Town,
+                        Store State / County, Store Postcode.
+                      </p>
+                    </div>
+                    <div class="payment_item ">
+                      <div class="radion_btn">
+                        <input type="radio" id="razorpay" name="paymentMethod" value="online"/>
+                        <label for="razorpay">RazorPay</label>
+                        {{!-- <img src="/img1/product/single-product/card.jpg" alt="" /> --}}
+                        <div class="check"></div>
+                      </div>
+                      <p>
+                        Please send a check to Store Name, Store Street, Store Town,
+                        Store State / County, Store Postcode.
+                      </p>
+                    </div>
+                    {{!-- <div class="creat_account">
+                      <input type="checkbox" id="f-option4" name="selector" />
+                      <label for="f-option4">I've read and accept the </label>
+                      <a href="#">terms & conditions*</a>
+                    </div> --}}
+                    <button class="btn_3" type="submit">Proceed to Pay</button>
+                    </div>
+                    </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      
+
+    <script>
+      $('#checkoutForm').submit((e)=>{
+        e.preventDefault()
+       $.ajax({
+        url:'/checkout',
+        method:'post',
+        data:$('#checkoutForm').serialize(),
+        success:(response)=>{
+          if(response.codSuccess){
+            location.href='/orderSuccess'
+          }else{
+            razorpayPayment(response)
+
+          }
+        }
+       })
+      })
+      function razorpayPayment(order){
+        var options = {
+    "key": "rzp_test_zoQlsa1ZzxunfS", // Enter the Key ID generated from the Dashboard
+    "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "Book Store",
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature);
+        verifyPayment(response,order)
+
+    },
+    "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+rzp1.open();
+      }
+         function verifyPayment(payment,order){
+        $.ajax({
+          url:'/verify-Payment',
+          data:{
+            payment,
+            order
+          }, 
+          method:'post',
+          success:(response)=>{
+            alert(response)
+            if(response.status){
+               location.href='/orderSuccess'
+            }else{
+              alert('payment failed')
+            }
+
+          } 
+        })
+      }
+    </script>
+    <script>
+      function autofill(fname,mobile,email,house,localplace,town,district,state,pincode){
+
+         
+        
+        document.getElementById('fname').value = fname
+
+				document.getElementById('mobile').value = mobile
+        document.getElementById('email').value = email
+        document.getElementById('house').value = house
+        document.getElementById('localplace').value = localplace
+				document.getElementById('town').value = town
+				document.getElementById('district').value = district
+				document.getElementById('state').value = state
+				document.getElementById('pincode').value = pincode
+				
+				
+      }
+    </script>
+
+    <script>
+      function copyFunction(couponId) {
+  var copyText = document.getElementById(couponId);copyText.select();
+  copyText.setSelectionRange(0, 99999); 
+   navigator.clipboard.writeText(copyText.value);
+   //document.getElementById('aze').value=couponId
+  //  popup
+  $(".copy-button").on("click", function (e) {
+      e.preventDefault();
+      var self = $(this);
+      console.log(self.data("title"));
+      Swal.fire({
+  position: 'top-center',
+  icon: 'success',
+  title: 'Coupon Copied '+"'"+copyText.value+"'",
+  showConfirmButton: false,
+  timer: 2000
+})
+    })}
+    </script>
+
+  
+      <script>
+			function couponApply() {
+{{!-- alert() --}}
+				let couponCode = document.getElementById('couponInput').value
+				let couponTotal = document.getElementById('couponTotal').value
+        document.getElementById('couponName').value=couponCode
+		
+				$.ajax({
+					url: '/couponApply',
+					data: {
+						coupon: couponCode,
+						total: couponTotal
+					},
+					method: 'post',
+					success: (response) => {
+						//alert(response.total)
+						if (response.couponSuccess) {
+            // alert(response.couponSuccess)    
+							let oldTotal =parseInt(document.getElementById('couponTotal').value)
+							let discount = oldTotal - parseInt(response.total)
+              alert(response.discountpers)
+              let discountpercentag=parseInt(response.discountpers)
+              document.getElementById('totalwithCoupon').innerHTML = '₹' + response.total
+              document.getElementById('discountedPrice').value = discount
+							document.getElementById('discount').innerHTML = '₹' + discount
+              document.getElementById('discoAmountpercentage').value=discountpercentag
+             {{!-- alert(discount) --}}
+							//document.getElementById('couponInput').readOnly = true
+              
+            	
+
+              {{!-- alert('999') --}}
+              {{!-- document.getElementById('paidAmount').innerHTML ='₹' + (parseInt(response.total)) --}}
+              
+           {{!-- alert('RRRRRRRRRRRRRRRRRRRR') --}}
+              document.getElementById('MainTotal').value = response.total
+              {{!-- document.getElementById('amountToBePaid').value =(parseInt(response.total)) --}}
+              //alert('juuuuuu')
+              //alert('juuuuuu')amountToBePaid
+							
+							$("#discountspan").html(parseInt(discount))
+							$('#discountspan').show()
+							$('#discountLabel').show()
+							$('#discounttd').show()
+							$('#newTotal').show()
+							$('#tdTotal').show()
+							$('#totalOriginal').show()
+		
+							document.getElementById('grandTotal').innerHTML = '₹'+ response.total
+							$('#couponSuccess').show()
+							$('#couponUsed').hide()
+							$('#couponInvalid').hide()
+							$('#couponExpired').hide()
+							$('#couponMaxLimit').hide()
+						}
+		
+						if (response.couponUsed) {
+            
+							$('#couponUsed').show()
+							$('#couponSuccess').hide()
+							$('#couponInvalid').hide()
+							$('#couponExpired').hide()
+							$('#discountspan').hide()
+							$('#discountLabel').hide()
+							$('#couponMaxLimit').hide()
+						}
+						if (response.invalidCoupon) {
+							$('#couponInvalid').show()
+							$('#couponSuccess').hide()
+							$('#couponUsed').hide()
+							$('#couponExpired').hide()
+							$('#discountspan').hide()
+							$('#discountLabel').hide()
+							$('#couponMaxLimit').hide()
+						}
+						if (response.couponExpired) {
+							$('#couponExpired').show()
+							$('#couponSuccess').hide()
+							$('#couponInvalid').hide()
+							$('#couponUsed').hide()
+							$('#discountspan').hide()
+							$('#discountLabel').hide()
+							$('#couponMaxLimit').hide()
+						}
+						if (response.couponMaxLimit) {
+							$('#couponMaxLimit').show()
+							$('#couponExpired').hide()
+							$('#couponSuccess').hide()
+							$('#couponInvalid').hide()
+							$('#couponUsed').hide()
+							$('#discountspan').hide()
+							$('#discountLabel').hide()
+						}
+					}
+				})
+			}
+		</script>
+  
+
+
+
+        
+    <!-- Search model end -->
+
+<!-- JS here -->
+
+  <script src="/Chekout/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+  <!-- Jquery, Popper, Bootstrap -->
+  <script src="/Chekout/assets/js/vendor/jquery-1.12.4.min.js"></script>
+  <script src="/Chekout/assets/js/popper.min.js"></script>
+  <script src="/Chekout/assets/js/bootstrap.min.js"></script>
+  <!-- Jquery Mobile Menu -->
+  <script src="/Chekout/assets/js/jquery.slicknav.min.js"></script>
+
+  <!-- Jquery Slick , Owl-Carousel Plugins -->
+  <script src="/Chekout/assets/js/owl.carousel.min.js"></script>
+  <script src="/Chekout/assets/js/slick.min.js"></script>
+
+  <!-- One Page, Animated-HeadLin -->
+  <script src="/Chekout/assets/js/wow.min.js"></script>
+  <script src="/Chekout/assets/js/animated.headline.js"></script>
+  <script src="/Chekout/assets/js/jquery.magnific-popup.js"></script>
+
+  <!-- Scroll up, nice-select, sticky -->
+  <script src="/Chekout/assets/js/jquery.scrollUp.min.js"></script>
+  <script src="/Chekout/assets/js/jquery.nice-select.min.js"></script>
+  <script src="/Chekout/assets/js/jquery.sticky.js"></script>
+  
+  <!-- contact js -->
+  <script src="/Chekout/assets/js/contact.js"></script>
+  <script src="/Chekout/assets/js/jquery.form.js"></script>
+  <script src="/Chekout/assets/js/jquery.validate.min.js"></script>
+  <script src="/Chekout/assets/js/mail-script.js"></script>
+  <script src="/Chekout/assets/js/jquery.ajaxchimp.min.js"></script>
+      
+  <!-- Jquery Plugins, main Jquery -->	
+  <script src="/Chekout/assets/js/plugins.js"></script>
+  <script src="/Chekout/assets/js/main.js"></script>
+  
+   {{!-- index --}}
+    <!--===============================================================================================-->
+    <script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/vendor/bootstrap/js/popper.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/vendor/select2/select2.min.js"></script>
+    <script>
+        $(".js-select2").each(function () {
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="/vendor/daterangepicker/moment.min.js"></script>
+    <script src="/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="/vendor/slick/slick.min.js"></script>
+    <script src="/javascripts/slick-custom.js"></script>
+    <!--===============================================================================================-->
+    <script src="/vendor/parallax100/parallax100.js"></script>
+    <script>
+        $('.parallax100').parallax100();
+    </script>
+    <!--===============================================================================================-->
+    <script src="/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <script>
+        $('.gallery-lb').each(function () { // the containers for all your galleries
+            $(this).magnificPopup({
+                delegate: 'a', // the selector for gallery item
+                type: 'image',
+                gallery: {
+                    enabled: true
+                },
+                mainClass: 'mfp-fade'
+            });
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="/vendor/isotope/isotope.pkgd.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/vendor/sweetalert/sweetalert.min.js"></script>
+    <script>
+        $('.js-addwish-b2').on('click', function (e) {
+            e.preventDefault();
+        });
+
+        $('.js-addwish-b2').each(function () {
+            var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+            $(this).on('click', function () {
+                swal(nameProduct, "is added to wishlist !", "success");
+
+                $(this).addClass('js-addedwish-b2');
+                $(this).off('click');
+            });
+        });
+
+        $('.js-addwish-detail').each(function () {
+            var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+            $(this).on('click', function () {
+                swal(nameProduct, "is added to wishlist !", "success");
+
+                $(this).addClass('js-addedwish-detail');
+                $(this).off('click');
+            });
+        });
+
+        /*---------------------------------------------*/
+
+        $('.js-addcart-detail').each(function () {
+            var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+            $(this).on('click', function () {
+                swal(nameProduct, "is added to cart !", "success");
+            });
+        });
+
+    </script>
+    <!--===============================================================================================-->
+    <script src="/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+        $('.js-pscroll').each(function () {
+            $(this).css('position', 'relative');
+            $(this).css('overflow', 'hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
+
+            $(window).on('resize', function () {
+                ps.update();
+            })
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="/javascripts/main.js"></script>
+    {{!-- /index --}}
+    {{! /head  }}
+</body>
+</html>
