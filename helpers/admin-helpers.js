@@ -338,7 +338,106 @@ module.exports = {
       const removeCoupon= await couponmodel.findByIdAndDelete({ _id: id });
       resolve(removeCoupon)
     })
+  },
+
+  salesReport:(data)=>{
+    let response={}
+       let {startDate,endDate} = data
+  
+  let d1, d2, text;
+  if (!startDate || !endDate) {
+      d1 = new Date();
+      d1.setDate(d1.getDate() - 7);
+      d2 = new Date();
+      text = "For the Last 7 days";
+    } else {
+      d1 = new Date(startDate);
+      d2 = new Date(endDate);
+      text = `Between ${startDate} and ${endDate}`;
+    }
+  
+  
+  const date = new Date(Date.now());
+  const month = date.toLocaleString("default", { month: "long" });
+  
+       return new Promise(async(resolve,reject)=>{
+  
+  let salesReport=await ordermodel.aggregate([
+  
+  {
+  $match: {
+    ordered_on: {
+      $lt: d2,
+      $gte: d1,
+    },
+  },
+  },
+  {
+  $match:{status:'placed'}
+  },
+  {
+  $group: {
+    _id: { $dayOfMonth: "$ordered_on" },
+    Total: { $sum: "$grandTotal" },
+  },
+  },
+  ])
+  
+  console.log(salesReport);
+  
+  
+  let categoryReport = await ordermodel.aggregate([
+   {
+     $match:{status:'placed'}
+    },
+   {
+      $unwind: "$product",
+    },{
+      $project:{
+          // brand: "$products.Name",
+          quantity:"$product.quantity"
+      }
+    },
+   
+    {
+      $group:{
+          _id:'$category',
+          totalAmount: { $sum: "$quantity" }, 
+    
+      }
+    },
+    { $sort : { quantity : -1 }} ,
+    { $limit : 5 },
+    
+    ])
+    console.log("]]]]]]]]]]]]]]]");
+    console.log(categoryReport); 
+  let orderCount = await ordermodel.find({date:{$gt : d1, $lt : d2}}).count()
+  
+  console.log(orderCount);
+  let totalAmounts=await ordermodel.aggregate([
+  {
+   $match:{status:'placed'}
+  },
+  {
+   $group:
+   {
+     _id: null,
+     totalAmount: { $sum:"$grandTotal"}
+   }
   }
+  ])
+  
+  console.log(totalAmounts);
+  console.log('qqqqqqqqqqqqqqqqqqq');
+  response.salesReport=salesReport
+  response.brandReport=categoryReport
+  response.orderCount=orderCount
+  response.totalAmountPaid=totalAmounts.totalAmount
+  resolve(response)      
+       })
+        
+  },
 
 
 
