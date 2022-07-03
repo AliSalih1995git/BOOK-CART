@@ -732,6 +732,7 @@ module.exports = {
         });
       },
       getSearchProducts: (key) => {
+        console.log(key +"hhhhhhh");
         return new Promise(async (resolve, reject) => {
           let serchProducts = await products
             .find({
@@ -742,6 +743,8 @@ module.exports = {
               ],
             })
             .lean();
+
+            console.log(serchProducts);
           resolve(serchProducts);
         });
       },
@@ -835,7 +838,27 @@ module.exports = {
         resolve(result)
       })
     },
-    
+    getallproducts: () => {
+      return new Promise(async (resolve, reject) => {
+        const allproducts = products.find({}).populate('category').populate('sub_cateogry').sort([['_id', -1]]).limit(8).lean();
+        resolve(allproducts);
+      });
+    },
+    getByCategories:(catid)=>{
+      console.log(catid);
+      return new Promise(async(resolve,reject)=>{
+        let categoryid=mongoose.Types.ObjectId(catid);
+        let result = await products.aggregate([  
+          {  
+              $match:{category:categoryid}
+              
+          }
+      ]).limit(20)
+      resolve(result)
+      })
+
+
+    },
      
 
 

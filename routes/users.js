@@ -27,7 +27,7 @@ router.get("/", async function (req, res, next) {
   }
    catProducts = await adminHelpers.getallproducts();
   // const moreProduct=await adminHelpers.moreProduct();
-  let product = await adminHelpers.ProductDetails(req.params.id);
+  let product = await adminHelpers.ProductDetails();
   let categories =await adminHelpers.getallSubcategory()
   console.log(product);
   // filterResult = await adminHelpers.getallproducts()
@@ -47,6 +47,7 @@ router.post('/getHomeFilter',(req,res)=>{
   console.log(req.body);
   let a = req.body
   let subcategoryFilter = a.subcategory
+  
   console.log(subcategoryFilter +"ggggggg");
 
   userHelpers.getHomeFilter(subcategoryFilter).then((result) => {
@@ -56,16 +57,18 @@ console.log(filterResult);
   })
 
 })
+router.get("/getAllFilterProduct",(req,res)=>{
+  userHelpers.getallproducts().then((response)=>{
+    filterResult=response
+    res.json({ status: true })
+  })
+  
 
-// let  categoryId=req.body.key
-// userHelpers.getSubProducts(categoryId).then((response)=>{
-//   res.json({ status: true });
-// })
-// })
+})
 
 router.get("/loadMore", (req, res) => {
 adminHelpers.moreProduct().then((response)=>{
-res.redirect("user/product");
+res.redirect("user/filterpage");
 });
 });
 
@@ -283,7 +286,7 @@ router.post("/deletewishlist", async (req, res) => {
     .deletewishlist(req.body, req.session.user._id)
     .then((response) => {
       res.json({ status: true });
-    });
+    }); 
 });
 router.get("/checkout", verifyLogin, async (req, res) => {
   const [
@@ -345,7 +348,7 @@ router.post("/checkout", async (req, res) => {
           });
       }
     });
-});
+});  
 
 router.post("/couponApply", async(req, res) => {
   let todayDate = new Date().toISOString().slice(0, 10);
@@ -393,6 +396,7 @@ router.get("/orderSuccess", verifyLogin, async (req, res) => {
   console.log(req.session.orderId);
   userHelpers.getorderProducts(req.session.orderId).then((response) => {
     const orderProducts = response;
+    console.log(orderProducts)
 
     res.render("user/order-success", { user, layout: false, orderProducts });
   });
@@ -461,19 +465,25 @@ router.get("/deleteAddress/:id", (req, res) => {
     res.redirect("/address-page");
   });
 });
-router.post("/searchResults", (req, res) => {
+router.post("/searchResult", (req, res) => {
   let key = req.body.key;
-  let id = req.query.id;
 
-  console.log(key+"dfdgdsgdsgsgsd");
- userHelpers.getSearchProducts(key,id).then((response)=>{
+  // console.log(key+"dfdgdsgdsgsgsd");
+ userHelpers.getSearchProducts(key).then((response)=>{
+  serchProducts=response
+  console.log("aaaaaaaaa");
+  console.log(serchProducts);
 
-     console.log(response+"fsadf");
-const serchProducts=response
-  res.render("user/product",{serchProducts})
+  res.redirect("/searchResults")
   });
  
 });
+router.get('/searchResults',(req,res)=>{
+
+  res.render("user/product",{serchProducts})
+})
+
+
 
 // checking filters
 
@@ -504,12 +514,30 @@ router.get('/shope',(req, res) => {
 });
 router.get('/filterpage',async(req,res)=>{
   const[category,subcategory]=await Promise.all([adminHelpers.getallcategory(),adminHelpers.getallsubcategory()])
-  res.render('user/Filter_demo',{filterResult, category,subcategory,user,layout:false})
+  res.render('user/Filter_Page',{filterResult, category,subcategory,user,layout:false})
 })
+router.get("/filterByCategories/:id",(req,res)=>{
+  var Id = req.params.id;
+  console.log(Id + "Id");
+
+  userHelpers.getByCategories(Id).then((response)=>{
+    // console.log('gsfsaf');
+    console.log(response);
+    serchProducts=response
+    res.redirect('/searchResults')
+
+  })
+ 
+}); 
 
 router.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/login");
 });
+
+
+
+
+
 
 module.exports = router;

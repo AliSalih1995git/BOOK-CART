@@ -190,7 +190,7 @@ module.exports = {
   },
   getallproducts: () => {
     return new Promise(async (resolve, reject) => {
-      const allproducts = products.find({}).populate('category').populate('sub_cateogry').limit(15).lean();
+      const allproducts = products.find({}).populate('category').populate('sub_cateogry').sort([['_id', -1]]).limit(15).lean();
       resolve(allproducts);
     });
   },

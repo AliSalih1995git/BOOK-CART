@@ -70,10 +70,11 @@
             <nav class="amado-nav">
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="/">Shop</a></li>
-                    <li class="active"><a href="product-details.html">Product</a></li>
+                    <li><a href="/shope">Shop</a></li>
+                    <li ><a href="/orders">My Orders</a></li>
                     <li><a href="/cart">Cart</a></li>
-                    <li><a href="checkout.html">Checkout</a></li>
+                    <li class="active"><a href="#">View Product</a></li>
+                    <li><a href="/">About</a></li>
                 </ul>
             </nav>
             <!-- Button Group -->
@@ -120,7 +121,7 @@
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <a class="gallery_img" href="/upload/{{singleproduct.image.[0]}}" >
-                                            <img class="d-block w-100" src="/upload/{{singleproduct.image.[0]}}" style="height: 650px;;width:auto" >
+                                            <img class="d-block w-100" src="/upload/{{singleproduct.image.[0]}}" style="height: 550px;;width:auto" >
                                         </a>
                                     </div>
                                 </div>
@@ -138,14 +139,14 @@
                                 <!-- Ratings & Review -->
                                 <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
                                     <div class="ratings">
+                                        {{!-- <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i> --}}
                                     </div>
                                     <div class="review">
-                                        <a href="#">Write A Review</a>
+                                        {{!-- <a href="#">Write A Review</a> --}}
                                     </div>
                                 </div>
                                 <!-- Avaiable -->
@@ -165,7 +166,7 @@
                                         <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">
                                         <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
                                     </div> --}}
-                                </div>
+                                
                                 <button type="submit" onclick="addTocart('{{singleproduct._id}}')"  class="btn amado-btn">Add to cart</button>
                             {{!-- </form> --}}
                                 {{#if wishlist}}
@@ -173,7 +174,7 @@
                                 {{else}}
                                   <button onclick="addTowishlist('{{singleproduct._id}}')" class="btn amado-btn">Add to wishlist</button>
                                  {{/if}}             
-                                
+                                </div>
                         </div>
                     </div>
                 </div>
