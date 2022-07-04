@@ -733,7 +733,8 @@ module.exports = {
       },
       getSearchProducts: (key) => {
         console.log(key +"hhhhhhh");
-        return new Promise(async (resolve, reject) => {
+        try{
+          return new Promise(async (resolve, reject) => {
           let serchProducts = await products
             .find({
               $or: [
@@ -747,13 +748,17 @@ module.exports = {
             console.log(serchProducts);
           resolve(serchProducts);
         });
+
+        }catch(error){
+          console.error(error);
+        }
+        
       },
 
       //filter category
       searchFilter :(categoryFilter,subcategoryFilter,price) => {
-      
-
-        return new Promise(async (resolve, reject) => {
+        try{
+          return new Promise(async (resolve, reject) => {
             let result
     
             if(categoryFilter && subcategoryFilter  ){
@@ -820,10 +825,18 @@ module.exports = {
             }
             resolve(result)
         })
+
+        }catch(error){
+          console.error(error);
+        }
+      
+
+        
       },
       getHomeFilter:(categoryFilter)=>{
         console.log(categoryFilter +"ffff");
-        return new Promise(async(resolve,reject)=>{
+        try{
+          return new Promise(async(resolve,reject)=>{
             let subcategoryid=mongoose.Types.ObjectId(categoryFilter)
        let result = await products.aggregate([
           
@@ -837,6 +850,11 @@ module.exports = {
       
         resolve(result)
       })
+
+      }catch(error){
+        console.error(error)
+      }
+        
     },
     getallproducts: () => {
       return new Promise(async (resolve, reject) => {
@@ -846,16 +864,22 @@ module.exports = {
     },
     getByCategories:(catid)=>{
       console.log(catid);
-      return new Promise(async(resolve,reject)=>{
-        let categoryid=mongoose.Types.ObjectId(catid);
-        let result = await products.aggregate([  
-          {  
-              $match:{category:categoryid}
-              
-          }
-      ]).limit(20)
-      resolve(result)
-      })
+      try{
+        return new Promise(async(resolve,reject)=>{
+          let categoryid=mongoose.Types.ObjectId(catid);
+          let result = await products.aggregate([  
+            {  
+                $match:{category:categoryid}
+                
+            }
+        ]).limit(20)
+        resolve(result)
+        })
+
+      }catch(error){
+        console.error(error)
+      }
+     
 
 
     },

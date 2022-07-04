@@ -234,7 +234,8 @@ router.post('/AddCoupon',(req,res)=>{
 router.post('/getData', async (req, res) => {
   console.log("==========");
   console.log(req.body, 'req.body');
-  const date = new Date(Date.now());
+  try{
+    const date = new Date(Date.now());
   const month = date.toLocaleString("default", { month: "long" });   
   adminHelper.salesReport(req.body).then((data) => { 
 
@@ -264,6 +265,11 @@ router.post('/getData', async (req, res) => {
     console.log("", totalArray);
     res.json({ dateArray, totalArray,brandArray, sumArray, orderCount, totalAmountPaid, pendingAmount })
   })
+
+  }catch(error){
+    console.error(error)
+  }
+  
 })
 
 
